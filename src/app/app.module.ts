@@ -12,6 +12,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { ResultatComponent } from './resultat/resultat.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +25,17 @@ import { HeaderComponent } from './header/header.component';
     NavBarComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchBarComponent,
+    FilterPipe,
+    ResultatComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

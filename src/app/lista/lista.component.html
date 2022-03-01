@@ -2,14 +2,14 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Skattefri?</th>
         <th>Aktivitet</th>
+        <th>Skattefri?</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let aktivitet of akt">
-        <td>{{ aktivitet.skattefri }}</td>
         <td>{{ aktivitet.aktivitet }}</td>
+        <td>{{ aktivitet.skattefri }}</td>
       </tr>
     </tbody>
   </table>
