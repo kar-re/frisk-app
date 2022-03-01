@@ -8,21 +8,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let aktivitet of akt">
-        <td>{{ akt?.skattefri }}</td>
-        <td>{{ akt?.aktivitet }}</td>
+        <td>{{ aktivitet.skattefri }}</td>
+        <td>{{ aktivitet.aktivitet }}</td>
       </tr>
     </tbody>
   </table>
-  <!-- <div class="card text-center" *ngIf="selectedContact">
-      <div class="card-header">
-        # {{selectedContact.id}}
-      </div>
-      <div class="card-block">
-        <h4 class="card-title">{{selectedContact.name}}</h4>
-        <p class="card-text">
-          {{selectedContact.description}}
-        </p>    
-      </div>
-
-    </div> -->
 </div>

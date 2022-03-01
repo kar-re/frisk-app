@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Aktiviteter, SkatteverketService } from '../skatteverket.service';
+import { Aktiviteter, Aktivitet, SkatteverketService } from '../skatteverket.service';
 
 @Component({
   selector: 'app-lista',
@@ -7,12 +7,14 @@ import { Aktiviteter, SkatteverketService } from '../skatteverket.service';
   styleUrls: ['./lista.component.scss']
 })
 export class ListaComponent implements OnInit {
-  akt: Aktiviteter | undefined;
+  akt: Aktivitet[] = [];
   constructor(public skatteverketService: SkatteverketService) { }
 
   ngOnInit(): void {
     this.skatteverketService.getAktiviteter()
-    .subscribe((data: Aktiviteter) => this.akt = { skattefri: (data as any).skattefri, aktivitet: (data as any).aktivitet,});
+    .subscribe((data: Aktiviteter) => this.akt = data.results.map(obj => 
+      ({skattefri: (obj as any)['skattefri förmån?'], aktivitet: (obj as any).aktivitet})
+      ))
   }
 
 }
