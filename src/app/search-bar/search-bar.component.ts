@@ -18,7 +18,6 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAktiviteterFromSkatteverket();
-    console.log(this.akt);
 
   }
 

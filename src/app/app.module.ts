@@ -16,7 +16,6 @@ import { AktivitetComponent } from './aktivitet/aktivitet.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { ResultatComponent } from './resultat/resultat.component';
 import { FormComponent } from './form/form.component';
 import { GeneratorComponent } from './generator/generator.component';
 
@@ -32,7 +31,6 @@ import { GeneratorComponent } from './generator/generator.component';
     AktivitetComponent,
     SearchBarComponent,
     FilterPipe,
-    ResultatComponent,
     FormComponent,
     GeneratorComponent
   ],

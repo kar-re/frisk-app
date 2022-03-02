@@ -1,5 +1,5 @@
 <div class="search"> <i class="fa fa-search"></i>
     <input type="text" [(ngModel)]="searchInput" [ngbTypeahead]="searchExamples" class="form-control"
         placeholder="Gäller friskvårdsbidrag för...">
-    <button class="btn btn-primary" (click)="handleClick($event)">Sök</button>
+        <a [routerLink]="['/aktiviteter', searchInput]"><button class="btn btn-primary">Sök</button></a> 
 </div>
