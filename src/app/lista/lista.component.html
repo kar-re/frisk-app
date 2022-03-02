@@ -9,7 +9,11 @@
     <tbody>
       <tr *ngFor="let aktivitet of akt">
         <td>{{ aktivitet.skattefri }}</td>
-        <td>{{ aktivitet.aktivitet }}</td>
+        <td>
+          <a routerLink="{{ aktivitet.aktivitet.split(' ')[0] }}">{{
+            aktivitet.aktivitet
+          }}</a>
+        </td>
       </tr>
     </tbody>
   </table>
