@@ -16,5 +16,6 @@ export class ListaComponent implements OnInit {
       ({skattefri: (obj as any)['skattefri förmån?'], aktivitet: (obj as any).aktivitet})
       ))
   }
+ 
 
 }

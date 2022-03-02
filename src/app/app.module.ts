@@ -13,6 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AktivitetComponent } from './aktivitet/aktivitet.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { ResultatComponent } from './resultat/resultat.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,18 @@ import { AktivitetComponent } from './aktivitet/aktivitet.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    AktivitetComponent
+    AktivitetComponent,
+    SearchBarComponent,
+    FilterPipe,
+    ResultatComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientJsonpModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
