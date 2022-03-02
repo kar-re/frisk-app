@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: "aktiviteter/:id", component: AktivitetComponent},
   {path: "lista", component: ListaComponent},
   {path: "form", component: FormComponent},
-  {path: "generator", component: GeneratorComponent},
 ];
 
 @NgModule({

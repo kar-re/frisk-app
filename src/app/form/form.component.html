@@ -1,1 +1,48 @@
-<p>form works!</p>
+<div class="bg-dark py-5">
+    <div class="container px-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-6">
+          <div class="text-center my-5">
+            <h1 class="display-5 fw-bolder text-white mb-2">
+              Hitta en aktivitet som passar dig!
+            </h1>
+
+<form (ngSubmit)="hittaAktiviteter()">
+
+<div class="text-white">Fysiskt eller lugnt?
+    <select (change) = "change1($any($event.target).value)">
+        <option value="" >--Spelar ingen roll--</option>
+        <option value="physical" >Fysiskt</option>
+        <option value="calm" >Lugnt</option>
+    </select>
+</div>
+
+<p></p>
+<div class="text-white">Träna i grupp eller ensam?
+    <select (change) = "change2($any($event.target).value)">
+        <option value="" >--Spelar ingen roll--</option>
+        <option value="group" >I grupp</option>
+        <option value="alone" >Ensam</option>
+    </select>
+</div>
+
+<p></p>
+<div class="text-white">Villig att hyra/köpa utrustning?
+    <select (change) = "change3($any($event.target).value)">
+        <option value="" >--Välj--</option>
+        <option value="equipment" >Ja, jag är villig att hyra/köpa utrustning</option>
+        <option value="noEquipment" >Nej, jag är inte villig att hyra/köpa utrustning</option>
+    </select>
+
+</div>
+
+<p></p>
+<button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit">Hitta aktiviteter!</button>
+</form>
+<li class="text-white" *ngFor="let activity of myFoundActivities">{{activity}}</li>
+<app-generator></app-generator>
+</div>
+</div>
+</div>
+</div>
+</div>
