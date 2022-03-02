@@ -1,0 +1,40 @@
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-6">
+          <div class="text-center my-5">
+            <h1 class="display-5 fw-bolder text-white mb-2">
+              Aktivitetsgenerator
+            </h1>
+            <p class="lead text-white-50 mb-4">
+              Vet du inte vad du ska spendera ditt friskvårdsbidrag på? Slumpa fram en aktivitet!
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+              <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features"
+                >Vad fan ska jag göra?</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container" style="margin-top: 70px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Skattefri?</th>
+          <th>Aktivitet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aktivitet of akt">
+          <td>{{ aktivitet.skattefri }}</td>
+          <td>{{ aktivitet.aktivitet }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

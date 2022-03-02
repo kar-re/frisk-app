@@ -6,6 +6,7 @@ import { OmOssComponent } from './om-oss/om-oss.component';
 import { AktivitetComponent } from './aktivitet/aktivitet.component';
 import { ResultatComponent } from './resultat/resultat.component';
 import { FormComponent } from './form/form.component';
+import { GeneratorComponent } from './generator/generator.component';
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "home"},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "lista", component: ListaComponent},
   {path: "resultat", component: ResultatComponent},
   {path: "form", component: FormComponent},
+  {path: "generator", component: GeneratorComponent},
 ];
 
 @NgModule({
