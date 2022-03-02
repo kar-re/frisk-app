@@ -5,6 +5,7 @@ import { ListaComponent } from './lista/lista.component';
 import { OmOssComponent } from './om-oss/om-oss.component';
 import { AktivitetComponent } from './aktivitet/aktivitet.component';
 import { ResultatComponent } from './resultat/resultat.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "home"},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "aktiviteter/:id", component: AktivitetComponent},
   {path: "lista", component: ListaComponent},
   {path: "resultat", component: ResultatComponent},
+  {path: "form", component: FormComponent},
 ];
 
 @NgModule({

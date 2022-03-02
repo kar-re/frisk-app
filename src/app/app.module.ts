@@ -17,6 +17,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { ResultatComponent } from './resultat/resultat.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResultatComponent } from './resultat/resultat.component';
     AktivitetComponent,
     SearchBarComponent,
     FilterPipe,
-    ResultatComponent
+    ResultatComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
