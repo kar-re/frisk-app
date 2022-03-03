@@ -20,7 +20,7 @@ export interface Aktiviteter {
   providedIn: 'root'
 })
 export class SkatteverketService {
-  aktivitetUrl = "https://skatteverket.entryscape.net/rowstore/dataset/1429b654-11eb-401e-ae3c-0dd6b52e6c89/json";
+  aktivitetUrl = "https://skatteverket.entryscape.net/rowstore/dataset/1429b654-11eb-401e-ae3c-0dd6b52e6c89/json?_limit=500";
   // aktiviteter: Aktiviteter | undefined;
 
   constructor(private http: HttpClient) { }
