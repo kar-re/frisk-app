@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+
 })
 
 export class FormComponent implements OnInit {
+
   activities: { [key: string]: activityType} = {};
   val1 = "";
   val2 = "";
   val3 = "";
+  choices = "";
   myFoundActivities: string[];
+
   constructor() {
     this.myFoundActivities = [];
    }
@@ -91,8 +96,16 @@ export class FormComponent implements OnInit {
         }
       } 
     });
-    console.log(this.myFoundActivities)
   }
+
+  rensa(){
+    this.myFoundActivities=[]
+    this.val1 = "";
+    this.val2 = "";
+    this.val3 = "";
+  }
+
+
 
 }
 interface activityType {
