@@ -2,7 +2,6 @@
     <div class="container px-5">
       <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">
-          <div class="text-center my-5">
             <h1 class="display-5 fw-bolder text-white mb-2">
               Hitta en aktivitet som passar dig!
             </h1>
@@ -12,8 +11,9 @@
 
 <form (ngSubmit)="hittaAktiviteter()">
 
-<div class="text-white">Fysiskt eller lugnt?
-    <select value = {{val1}} (change) = "change1($any($event.target).value)">
+<div class="form-group">
+    <label for="physicalOrCalm" class="text-white">Fysiskt eller lugnt?</label>
+    <select id="physicalOrCalm" class="form-select" value = {{val1}} (change) = "change1($any($event.target).value)">
         <option value="" >--Spelar ingen roll--</option>
         <option value="physical" >Fysiskt</option>
         <option value="calm" >Lugnt</option>
@@ -22,7 +22,7 @@
 
 <p></p>
 <div class="text-white">Träna i grupp eller ensam?
-    <select value = {{val2}} (change) = "change2($any($event.target).value)">
+    <select class="form-select" value = {{val2}} (change) = "change2($any($event.target).value)">
         <option value="" >--Spelar ingen roll--</option>
         <option value="group" >I grupp</option>
         <option value="alone" >Ensam</option>
@@ -31,7 +31,7 @@
 
 <p></p>
 <div class="text-white">Villig att hyra/köpa utrustning?
-    <select value = {{val3}} (change) = "change3($any($event.target).value)">
+    <select class="form-select" value = {{val3}} (change) = "change3($any($event.target).value)">
         <option value="" disabled>--Välj--</option>
         <option value="equipment" >Ja, jag är villig att hyra/köpa utrustning</option>
         <option value="noEquipment" >Nej, jag är inte villig att hyra/köpa utrustning</option>
@@ -41,14 +41,18 @@
 
 <p></p>
 <button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit">Hitta aktiviteter!</button>
+
+<li class="list-group-item  rounded " *ngFor="let activity of myFoundActivities">
+    <a routerLink="/aktiviteter/{{ activity}}">{{
+    activity
+}}</a></li>
+<button class="btn btn-danger btn-right btn-lg px-4 me-sm-3" type="button" (click)="rensa()">Rensa</button>
+
 </form>
 <p></p>
-<li class="text-white" *ngFor="let activity of myFoundActivities">{{activity}}</li>
-<button class="btn btn-primary btn-lg me-sm-3 p-1" (click)="rensa()">Rensa</button>
 <p class="pt-4"></p>
 <p class = "pt-4 border-top border-white"></p>
 <div><app-generator></app-generator></div>
-</div>
 </div>
 </div>
 </div>
