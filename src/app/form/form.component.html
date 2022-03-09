@@ -1,62 +1,100 @@
 <div class="bg-dark py-5">
-    <div class="container px-5">
-      <div class="row gx-5 justify-content-center">
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bolder text-white mb-2">
-              Hitta en aktivitet som passar dig!
-            </h1>
-            <p class="lead text-white-50 mb-4">
-                Vill du veta vilka aktiviteter du kan använda ditt friskvårdsbidrag till, men är osäker vad som skulle passa dig? Fyll i formuläret och få massa förslag!
-            </p>
+  <div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bolder text-white mb-2">
+          Hitta en aktivitet som passar dig!
+        </h1>
+        <p class="lead text-white-50 mb-4">
+          Vill du veta vilka aktiviteter du kan använda ditt friskvårdsbidrag
+          till, men är osäker vad som skulle passa dig? Fyll i formuläret och få
+          massa förslag!
+        </p>
 
-<form (ngSubmit)="myForm.valid && hittaAktiviteter()" #myForm="ngForm">
+        <form
+          (ngSubmit)="
+            setResetButtonToFalse() && myForm.valid && hittaAktiviteter()
+          "
+          #myForm="ngForm"
+        >
+          <div class="form-group">
+            <label class="text-white">Fysiskt eller lugnt?</label>
+            <select
+              class="form-select"
+              value="{{ val1 }}"
+              (change)="change1($any($event.target).value)"
+            >
+              <option value="">--Spelar ingen roll--</option>
+              <option value="physical">Fysiskt</option>
+              <option value="calm">Lugnt</option>
+            </select>
+          </div>
 
-<div class="form-group">
-    <label class="text-white">Fysiskt eller lugnt?</label>
-    <select class="form-select" value = {{val1}} (change) = "change1($any($event.target).value)">
-        <option value="" >--Spelar ingen roll--</option>
-        <option value="physical" >Fysiskt</option>
-        <option value="calm" >Lugnt</option>
-    </select>
-</div>
+          <p></p>
+          <div class="text-white">
+            Träna i grupp eller ensam?
+            <select
+              class="form-select"
+              value="{{ val2 }}"
+              (change)="change2($any($event.target).value)"
+            >
+              <option value="">--Spelar ingen roll--</option>
+              <option value="group">I grupp</option>
+              <option value="alone">Ensam</option>
+            </select>
+          </div>
 
-<p></p>
-<div class="text-white">Träna i grupp eller ensam?
-    <select class="form-select" value = {{val2}} (change) = "change2($any($event.target).value)">
-        <option value="" >--Spelar ingen roll--</option>
-        <option value="group" >I grupp</option>
-        <option value="alone" >Ensam</option>
-    </select>
-</div>
+          <p></p>
+          <div class="text-white">
+            Villig att hyra/köpa utrustning?
+            <select
+              class="form-select"
+              name="myWilling"
+              [(ngModel)]="val3"
+              #myWilling="ngModel"
+              required
+              value="{{ val3 }}"
+              (change)="change3($any($event.target).value)"
+            >
+              <option value="" disabled>--Välj--</option>
+              <option value="equipment">
+                Ja, jag är villig att hyra/köpa utrustning
+              </option>
+              <option value="noEquipment">
+                Nej, jag är inte villig att hyra/köpa utrustning
+              </option>
+            </select>
+            <div
+              *ngIf="myForm.submitted && myWilling.invalid && !pressedReset"
+              class="text-danger"
+            >
+              <h6>Obligatoriskt fält</h6>
+            </div>
+          </div>
 
-<p></p>
-<div class="text-white">Villig att hyra/köpa utrustning?
-    <select class="form-select" name="myWilling" [(ngModel)]="val3" #myWilling="ngModel"
-    [ngClass]="{ 'is-invalid': myForm.submitted && myWilling.invalid }" required value = {{val3}} (change) = "change3($any($event.target).value)">
-        <option value="" disabled>--Välj--</option>
-        <option value="equipment" >Ja, jag är villig att hyra/köpa utrustning</option>
-        <option value="noEquipment" >Nej, jag är inte villig att hyra/köpa utrustning</option>
-    </select>
-    <div *ngIf="myForm.submitted && myWilling.invalid" class="text-danger">
-        <h6 *ngIf="myWilling.errors?['required'] : ['fail'] ">Obligatoriskt fält</h6>
+          <p></p>
+          <button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit">
+            Hitta aktiviteter!
+          </button>
+
+          <li
+            class="list-group-item rounded"
+            *ngFor="let activity of myFoundActivities"
+          >
+            <a routerLink="/aktiviteter/{{ activity }}">{{ activity }}</a>
+          </li>
+          <button
+            class="btn btn-danger btn-right btn-lg px-4 me-sm-3"
+            type="button"
+            (click)="rensa()"
+          >
+            Rensa
+          </button>
+        </form>
+        <p></p>
+        <p class="pt-4"></p>
+        <p class="pt-4 border-top border-white"></p>
       </div>
-   
-</div>
-
-<p></p>
-<button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit">Hitta aktiviteter!</button>
-
-<li class="list-group-item  rounded " *ngFor="let activity of myFoundActivities">
-    <a routerLink="/aktiviteter/{{ activity}}">{{
-    activity
-}}</a></li>
-<button class="btn btn-danger btn-right btn-lg px-4 me-sm-3" type="button" (click)="rensa()">Rensa</button>
-
-</form>
-<p></p>
-<p class="pt-4"></p>
-<p class = "pt-4 border-top border-white"></p>
-</div>
-</div>
-</div>
+    </div>
+  </div>
 </div>

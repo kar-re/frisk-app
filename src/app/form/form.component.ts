@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Component, NgModule, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
-
 })
 
 export class FormComponent implements OnInit {
@@ -15,6 +13,7 @@ export class FormComponent implements OnInit {
   val2 = "";
   val3 = "";
   choices = "";
+  pressedReset = false;
   myFoundActivities: string[];
 
   constructor() {
@@ -67,21 +66,17 @@ export class FormComponent implements OnInit {
 
   change1 (choice:any) {
     this.val1 = choice;
-    // console.log(this.val1)
   }
 
   change2 (choice:any) {
     this.val2 = choice;
-    // console.log(this.val2)
   }
 
   change3 (choice:any) {
     this.val3 = choice;
-    // console.log(this.val3)
   }
 
   hittaAktiviteter(){
-    console.log("Hittat aktiviteter!!")
     this.myFoundActivities = [];
     Object.keys(this.activities).map(activity => {
       if (this.val1 === "" || (this.activities as any)[activity][this.val1]){ //Om man inte valt nått ska allt med!
@@ -96,6 +91,7 @@ export class FormComponent implements OnInit {
         }
       } 
     });
+    
   }
 
   rensa(){
@@ -103,9 +99,13 @@ export class FormComponent implements OnInit {
     this.val1 = "";
     this.val2 = "";
     this.val3 = "";
+    this.pressedReset = true;
   }
 
-
+  setResetButtonToFalse(){
+    this.pressedReset = false;
+    return true;
+  }
 
 }
 interface activityType {
@@ -116,4 +116,3 @@ interface activityType {
   'noEquipment'?: boolean;
   'equipment'?: boolean;
 }
-
