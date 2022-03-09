@@ -12,13 +12,19 @@ export class ListaComponent implements OnInit {
   constructor(public skatteverketService: SkatteverketService) { }
 
   ngOnInit(): void {
+    // Legacy kod innan global error handling
+    //
+    // this.skatteverketService.getAktiviteter()
+    // .subscribe({next: (data: Aktiviteter) => this.akt = data.results.map(obj => 
+    //   ({skattefri: (obj as any)['skattefri förmån?'], aktivitet: (obj as any).aktivitet})
+    //   ), error: (err: any) => {
+    //     this.error = "Något gick fel, försök senare!"; 
+    //   }
+    // });
     this.skatteverketService.getAktiviteter()
     .subscribe({next: (data: Aktiviteter) => this.akt = data.results.map(obj => 
       ({skattefri: (obj as any)['skattefri förmån?'], aktivitet: (obj as any).aktivitet})
-      ), error: (err: any) => {
-        this.error = "Något gick fel, försök senare!"; 
-      }
-    });
+      )});
   }
  
 

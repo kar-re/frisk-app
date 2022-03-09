@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, ChangeDetectorRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {  HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
@@ -19,10 +19,15 @@ import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { GeneratorComponent } from './generator/generator.component';
 import { Aktivitet404Component } from './aktivitet404/aktivitet404.component';
+import { ErroralertComponent } from './erroralert/erroralert.component';
+import { WikipediaService } from './wikipedia.service';
+import { SkatteverketService } from './skatteverket.service';
+import { ErrorService } from './error.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ErroralertComponent,
     OmOssComponent,
     ListaComponent,
     NavBarComponent,
@@ -34,7 +39,7 @@ import { Aktivitet404Component } from './aktivitet404/aktivitet404.component';
     FilterPipe,
     FormComponent,
     GeneratorComponent,
-    Aktivitet404Component
+    Aktivitet404Component,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +47,11 @@ import { Aktivitet404Component } from './aktivitet404/aktivitet404.component';
     HttpClientJsonpModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [ WikipediaService, SkatteverketService, ErrorService,
+    {provide: ErrorHandler, useClass: ErroralertComponent}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

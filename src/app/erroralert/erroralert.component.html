@@ -1,0 +1,10 @@
+<div class="toast-container fixed-bottom end-0 p-3" style="z-index: 1200">
+  <ngb-toast
+    *ngFor="let error of errorService.errorsLog"
+    [header]="'Fel'"
+    [autohide]="true"
+    [delay]="5000"
+    (hidden)="errorService.remove(error)"
+    >{{ error }}
+  </ngb-toast>
+</div>

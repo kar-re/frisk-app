@@ -67,17 +67,17 @@ export class FormComponent implements OnInit {
 
   change1 (choice:any) {
     this.val1 = choice;
-    console.log(this.val1)
+    // console.log(this.val1)
   }
 
   change2 (choice:any) {
     this.val2 = choice;
-    console.log(this.val2)
+    // console.log(this.val2)
   }
 
   change3 (choice:any) {
     this.val3 = choice;
-    console.log(this.val3)
+    // console.log(this.val3)
   }
 
   hittaAktiviteter(){

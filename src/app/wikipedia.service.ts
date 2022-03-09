@@ -29,7 +29,7 @@ export class WikipediaService {
           {
             next: (data: any) => {
               if (Object.keys(data.query.pages)[0] === '-1') {
-                throw new Error('Finns ingen wikipediaartikel')
+                throw new Error(`Hittar ingen wikipedia-artikel för ${name.toLocaleLowerCase()}`)
               } 
             },
             error: (error) => (this.handleError(error))

@@ -26,7 +26,7 @@ export class SkatteverketService {
   constructor(private http: HttpClient) { }
   
   getAktiviteter() {
-    return this.http.get<Aktiviteter>(this.aktivitetUrl).pipe(catchError((err: any) => {return throwError(() => err)}));;
+    return this.http.get<Aktiviteter>(this.aktivitetUrl).pipe(catchError((err: any) => {return throwError(() => err)}));
   }
 
   private handleError(error: HttpErrorResponse) {

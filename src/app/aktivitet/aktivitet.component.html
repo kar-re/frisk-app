@@ -1,18 +1,13 @@
 <div class="container px-5 py-5">
   <div class="row gx-5">
-    <div class="col-lg-6">
+    <div class="activity col-lg-6">
       <h1>{{ title }}</h1>
       <p class="lead text-50 mb-4">{{ subText }}</p>
       <div *ngIf="data">
         <div [innerHTML]="data.extract"></div>
         <p>
-          Data hämtad från <a href="https://sv.wikipedia.org">Wikipedia! 😁</a>
+          Data hämtad från <a href="https://sv.wikipedia.org">Wikipedia!</a>
         </p>
-      </div>
-      <div *ngIf="errorData">
-        Dessvärre hittade vi ingen mer information än detta just nu. Men det
-        kanske ploppar upp något lite senare? 🎇
-        <div class="alert alert-warning my-5">{{ errorData }}</div>
       </div>
     </div>
   </div>

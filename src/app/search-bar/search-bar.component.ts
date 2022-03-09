@@ -31,12 +31,18 @@ export class SearchBarComponent implements OnInit {
         )
 
   getAktiviteterFromSkatteverket() {
+    // Legacy kod innan global error handling
+    //
+    // this.skatteverketService.getAktiviteter()
+    //   .subscribe({next: (data: Aktiviteter) => data.results.map(obj =>
+    //     (this.akt.push(obj.aktivitet))
+    //   ), error: (err: any) => {
+    //     this.searchFailed=true;
+    //   }});
     this.skatteverketService.getAktiviteter()
-      .subscribe({next: (data: Aktiviteter) => data.results.map(obj =>
+      .subscribe( (data: Aktiviteter) => data.results.map(obj =>
         (this.akt.push(obj.aktivitet))
-      ), error: (err: any) => {
-        this.searchFailed=true;
-      }});
+      ));
   }
 
   handleClick(event: Event) {

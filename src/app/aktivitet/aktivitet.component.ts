@@ -31,12 +31,17 @@ export class AktivitetComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')!;
     const firstWordInId = this.id.split(' ').slice(0, 2).join(' ');
     if (this.isInSkatteverketList()) {
-      console.log("finns i listan");
+      // console.log("finns i listan");
       this.title = this.id;
       this.wikipediaService.getInfo(firstWordInId)
-        .subscribe({
-          next: (data: any) => { this.data = (Object.values(data.query.pages)[0]);  console.log(this.data)}, 
-          error: (err: any) => {console.error(err); this.errorData = err; return }}); //
+        .subscribe( (data: any) => 
+          this.data = (Object.values(data.query.pages)[0])
+        ); 
+      // this.wikipediaService.getInfo(firstWordInId)
+      //   .subscribe({
+      //     next: (data: any) => { this.data = (Object.values(data.query.pages)[0]);  console.log(this.data)}, 
+      //     error: (err: any) => {console.error(err); this.errorData = err; return }
+      //   }); 
 
       if (this.isSkatteFritt()) {
         this.subText = `Ja, ${this.id} ingår i friskvårdsbidraget.`;
@@ -56,12 +61,12 @@ export class AktivitetComponent implements OnInit {
   }
 
   testAktiviteter() {
-    console.log(this.aktivitetsLista.filter(a => a.aktivitet));
+    // console.log(this.aktivitetsLista.filter(a => a.aktivitet));
   }
 
   isSkatteFritt() {
     var isSkatteFri = this.aktivitetsLista.filter((a) => a.aktivitet.toLocaleLowerCase() === this.id.toLocaleLowerCase())[0];
-    console.log(isSkatteFri);
+    // console.log(isSkatteFri);
     return (isSkatteFri.skattefri.toLocaleLowerCase() === "ja")
   }
 
