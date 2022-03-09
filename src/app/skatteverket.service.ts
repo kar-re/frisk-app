@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -26,7 +26,17 @@ export class SkatteverketService {
   constructor(private http: HttpClient) { }
   
   getAktiviteter() {
-    return this.http.get<Aktiviteter>(this.aktivitetUrl);
+    return this.http.get<Aktiviteter>(this.aktivitetUrl).pipe(catchError((err: any) => {return throwError(() => err)}));;
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('Fel uppstod!!!', error.error);
+    } else {
+      console.error(
+        `Något knasar: ${error.status}, Body:`, error.error);
+    }
+    throw new Error('Kan inte nå Skatteverket just nu, prova lite senare!');
   }
 
 

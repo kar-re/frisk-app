@@ -29,7 +29,7 @@ export class GeneratorComponent implements OnInit {
           }
         })
       });
-      console.log('Längd: ' + this.activityList.length);
+      // console.log('Längd: ' + this.activityList.length);
       
   }
   buttonClick() {

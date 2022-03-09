@@ -18,6 +18,7 @@ import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { GeneratorComponent } from './generator/generator.component';
+import { Aktivitet404Component } from './aktivitet404/aktivitet404.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GeneratorComponent } from './generator/generator.component';
     SearchBarComponent,
     FilterPipe,
     FormComponent,
-    GeneratorComponent
+    GeneratorComponent,
+    Aktivitet404Component
   ],
   imports: [
     BrowserModule,

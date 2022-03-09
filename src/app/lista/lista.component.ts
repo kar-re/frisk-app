@@ -8,13 +8,17 @@ import { Aktiviteter, Aktivitet, SkatteverketService } from '../skatteverket.ser
 })
 export class ListaComponent implements OnInit {
   akt: Aktivitet[] = [];
+  error : any;
   constructor(public skatteverketService: SkatteverketService) { }
 
   ngOnInit(): void {
     this.skatteverketService.getAktiviteter()
-    .subscribe((data: Aktiviteter) => this.akt = data.results.map(obj => 
+    .subscribe({next: (data: Aktiviteter) => this.akt = data.results.map(obj => 
       ({skattefri: (obj as any)['skattefri förmån?'], aktivitet: (obj as any).aktivitet})
-      ))
+      ), error: (err: any) => {
+        this.error = "Något gick fel, försök senare!"; 
+      }
+    });
   }
  
 

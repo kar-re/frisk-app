@@ -1,5 +1,20 @@
-<div class="search"> <i class="fa fa-search"></i>
-    <input type="text" [(ngModel)]="searchInput" [ngbTypeahead]="searchExamples" class="form-control"
-        placeholder="Gäller friskvårdsbidrag för...">
-        <a [routerLink]="['/aktiviteter', searchInput]"><button class="btn btn-primary">Sök</button></a> 
+<div class="input-group input-group-lg search fieldset col">
+  <input
+    type="search"
+    [(ngModel)]="searchInput"
+    [ngbTypeahead]="searchExamples"
+    class="form-control"
+    placeholder="Gäller friskvårdsbidrag för..."
+    [class.is-invalid]="searchFailed"
+  />
+  <button
+    type="submit"
+    [routerLink]="['/aktiviteter', searchInput]"
+    class="inputGroup-sizing-lg btn btn-primary"
+  >
+    Sök <i class="fa fa-search"></i>
+  </button>
+  <div class="invalid-feedback" *ngIf="searchFailed">
+    Något gick fel! Försök gärna lite senare.
+  </div>
 </div>

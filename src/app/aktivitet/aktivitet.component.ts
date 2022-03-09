@@ -16,23 +16,27 @@ export class AktivitetComponent implements OnInit {
   title: string = "";
   id: string = "";
   subText: string = "";
+  errorData: string = "";
 
   constructor(private route: ActivatedRoute,
     private router: Router, private wikipediaService: WikipediaService, public skatteverketService: SkatteverketService) { }
 
   ngOnInit(): void {
+    // this.data = '';
     this.getAktiviteterFromSkatteverketAndRun();
 
   }
 
   doShit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    const firstWordInId = this.id.split(' ')[0];
+    const firstWordInId = this.id.split(' ').slice(0, 2).join(' ');
     if (this.isInSkatteverketList()) {
       console.log("finns i listan");
       this.title = this.id;
       this.wikipediaService.getInfo(firstWordInId)
-        .subscribe((data: any) => { this.data = (Object.values(data.query.pages)[0]); console.log(this.data) });
+        .subscribe({
+          next: (data: any) => { this.data = (Object.values(data.query.pages)[0]);  console.log(this.data)}, 
+          error: (err: any) => {console.error(err); this.errorData = err; return }}); //
 
       if (this.isSkatteFritt()) {
         this.subText = `Ja, ${this.id} ingår i friskvårdsbidraget.`;
@@ -41,9 +45,8 @@ export class AktivitetComponent implements OnInit {
       }
 
     } else {
-      console.log("finns inte i listan");
-      this.title = "Hoppsan!";
-      this.subText = " Du sökte på någonting som inte finns i vår eller Skatteverkets databas. Testa att söka på någonting annat eller titta i vår aktivitetslista i högra hörnet. Lycka till i jakten efter billig hälsa!";
+       this.router.navigate(['/404'], { replaceUrl: true }  );
+     
     }
   }
 
@@ -58,12 +61,8 @@ export class AktivitetComponent implements OnInit {
 
   isSkatteFritt() {
     var isSkatteFri = this.aktivitetsLista.filter((a) => a.aktivitet.toLocaleLowerCase() === this.id.toLocaleLowerCase())[0];
-    if (isSkatteFri.skattefri.toLocaleLowerCase() === "ja") {
-      return true;
-    } else {
-      return false;
-    }
-
+    console.log(isSkatteFri);
+    return (isSkatteFri.skattefri.toLocaleLowerCase() === "ja")
   }
 
   getAktiviteterFromSkatteverketAndRun() {
