@@ -9,11 +9,11 @@
                 Vill du veta vilka aktiviteter du kan använda ditt friskvårdsbidrag till, men är osäker vad som skulle passa dig? Fyll i formuläret och få massa förslag!
             </p>
 
-<form (ngSubmit)="hittaAktiviteter()">
+<form (ngSubmit)="myForm.valid && hittaAktiviteter()" #myForm="ngForm">
 
 <div class="form-group">
-    <label for="physicalOrCalm" class="text-white">Fysiskt eller lugnt?</label>
-    <select id="physicalOrCalm" class="form-select" value = {{val1}} (change) = "change1($any($event.target).value)">
+    <label class="text-white">Fysiskt eller lugnt?</label>
+    <select class="form-select" value = {{val1}} (change) = "change1($any($event.target).value)">
         <option value="" >--Spelar ingen roll--</option>
         <option value="physical" >Fysiskt</option>
         <option value="calm" >Lugnt</option>
@@ -31,12 +31,16 @@
 
 <p></p>
 <div class="text-white">Villig att hyra/köpa utrustning?
-    <select class="form-select" value = {{val3}} (change) = "change3($any($event.target).value)">
+    <select class="form-select" name="myWilling" [(ngModel)]="val3" #myWilling="ngModel"
+    [ngClass]="{ 'is-invalid': myForm.submitted && myWilling.invalid }" required value = {{val3}} (change) = "change3($any($event.target).value)">
         <option value="" disabled>--Välj--</option>
         <option value="equipment" >Ja, jag är villig att hyra/köpa utrustning</option>
         <option value="noEquipment" >Nej, jag är inte villig att hyra/köpa utrustning</option>
     </select>
-
+    <div *ngIf="myForm.submitted && myWilling.invalid" class="text-danger">
+        <h6 *ngIf="myWilling.errors?['required'] : ['fail'] ">Obligatoriskt fält</h6>
+      </div>
+   
 </div>
 
 <p></p>
