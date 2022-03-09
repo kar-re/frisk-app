@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpUrlEncodingCodec } from '@angular/common/http';
 import { Aktiviteter, Aktivitet, SkatteverketService } from '../skatteverket.service';
 
 @Component({

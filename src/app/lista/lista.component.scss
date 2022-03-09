@@ -1,0 +1,13 @@
+table {
+  display: block;
+  max-height: 86vh;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+thead {
+  background: linear-gradient(#ffffff, #ffffff27);
+  position: sticky;
+  top: 0;
+}
