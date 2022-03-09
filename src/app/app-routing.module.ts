@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: "aktiviteter/:id", component: AktivitetComponent},
   {path: "lista", component: ListaComponent},
   {path: "form", component: FormComponent},
-  // {path: "**", pathMatch: "full", redirectTo: "home"},
+  {path: "**", pathMatch: "full", redirectTo: "home"},
 ];
 
 @NgModule({
